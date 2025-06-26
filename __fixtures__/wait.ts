@@ -1,5 +1,4 @@
-import { jest } from '@jest/globals'
+import { jest } from '@jest/globals';
 
-export const wait: jest.MockedFunction<
-  (milliseconds: number) => Promise<string>
-> = jest.fn()
+export const wait: jest.MockedFunction<(milliseconds: number) => Promise<string>> =
+  jest.fn();

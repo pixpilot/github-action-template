@@ -93,14 +93,14 @@ There are a few things to keep in mind when writing your action code:
   In `main.js`, you will see that the action is run in an `async` function.
 
   ```typescript
-  import * as core from '@actions/core'
+  import * as core from '@actions/core';
   //...
 
   async function run() {
     try {
       //...
     } catch (error) {
-      core.setFailed((error as Error).message)
+      core.setFailed((error as Error).message);
     }
   }
   ```

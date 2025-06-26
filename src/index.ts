@@ -2,10 +2,10 @@
  * The entrypoint for the action. This file simply imports and runs the action's
  * main logic.
  */
-import { run } from './main.js'
+import { run } from './main.js';
 
 // Export the run function for local-action tool
-export { run }
+export { run };
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
-run()
+run();
