@@ -12,7 +12,15 @@ const config = {
     format: 'es',
     sourcemap: true,
   },
-  plugins: [typescript(), commonjs(), nodeResolve({ preferBuiltins: true })],
+  plugins: [
+    typescript({
+      outDir: 'dist',
+      declaration: false,
+      declarationMap: false,
+    }),
+    commonjs(),
+    nodeResolve({ preferBuiltins: true }),
+  ],
 };
 
 export default config;
