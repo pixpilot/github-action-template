@@ -67,7 +67,6 @@ jobs:
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: dist/**/*
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: ${{ github.workspace }}
           VALIDATE_ALL_CODEBASE: false
           # Only validate specific file types we want Super Linter to handle
           VALIDATE_MARKDOWN: true
