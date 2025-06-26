@@ -50,13 +50,13 @@ need to perform some initial setup steps before you can develop your action.
 1. :hammer_and_wrench: Install the dependencies
 
    ```bash
-   pnpm install
+   npm install
    ```
 
 1. :building_construction: Package the TypeScript for distribution
 
    ```bash
-   pnpm run bundle
+   npm run bundle
    ```
 
 1. :white_check_mark: Run the tests

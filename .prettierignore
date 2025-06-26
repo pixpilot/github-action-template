@@ -3,7 +3,7 @@
 dist/
 node_modules/
 coverage/
-pnpm-lock.yaml
+npm-lock.yaml
 .git/
 *.log
 *.lock
