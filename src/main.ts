@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
-import { wait } from './wait.js'
+
+import { wait } from './wait'
 
 /**
  * The main function for the action.

@@ -1,15 +1,20 @@
-# Create a JavaScript Action
+# Create a TypeScript Action
 
-[![GitHub Super-Linter](https://github.com/actions/javascript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
-![CI](https://github.com/actions/javascript-action/actions/workflows/ci.yml/badge.svg)
+> **Note:** This project is a fork of
+> [actions/javascript-action](https://github.com/actions/javascript-action),
+> rewritten and maintained in TypeScript for improved type safety and developer
+> experience.
 
-Use this template to bootstrap the creation of a JavaScript action. :rocket:
+[![GitHub Super-Linter](https://github.com/pixpilot/github-action-template/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
+![CI](https://github.com/pixpilot/github-action-template/actions/workflows/ci.yml/badge.svg)
+
+Use this template to bootstrap the creation of a TypeScript action. :rocket:
 
 This template includes compilation support, tests, a validation workflow,
 publishing, and versioning guidance.
 
 If you are new, there's also a simpler introduction in the
-[Hello world JavaScript action repository](https://github.com/actions/hello-world-javascript-action).
+[Hello world TypeScript action repository](https://github.com/actions/hello-world-javascript-action).
 
 ## Create Your Own Action
 
@@ -45,13 +50,13 @@ need to perform some initial setup steps before you can develop your action.
 1. :hammer_and_wrench: Install the dependencies
 
    ```bash
-   npm install
+   pnpm install
    ```
 
-1. :building_construction: Package the JavaScript for distribution
+1. :building_construction: Package the TypeScript for distribution
 
    ```bash
-   npm run bundle
+   pnpm run bundle
    ```
 
 1. :white_check_mark: Run the tests
@@ -87,15 +92,15 @@ There are a few things to keep in mind when writing your action code:
 - Most GitHub Actions toolkit and CI/CD operations are processed asynchronously.
   In `main.js`, you will see that the action is run in an `async` function.
 
-  ```javascript
-  const core = require('@actions/core')
+  ```typescript
+  import * as core from '@actions/core'
   //...
 
   async function run() {
     try {
       //...
     } catch (error) {
-      core.setFailed(error.message)
+      core.setFailed((error as Error).message)
     }
   }
   ```
@@ -120,7 +125,7 @@ So, what are you waiting for? Go ahead and start customizing your action!
    ```
 
    > This step is important! It will run [`ncc`](https://github.com/vercel/ncc)
-   > to build the final JavaScript action code with all dependencies included.
+   > to build the final TypeScript action code with all dependencies included.
    > If you do not run this step, your action will not work correctly when it is
    > used in a workflow. This step also includes the `--license` option for
    > `ncc`, which will create a license file for all of the production node
@@ -131,11 +136,10 @@ So, what are you waiting for? Go ahead and start customizing your action!
    The [`@github/local-action`](https://github.com/github/local-action) utility
    can be used to test your action locally. It is a simple command-line tool
    that "stubs" (or simulates) the GitHub Actions Toolkit. This way, you can run
-   your JavaScript action locally without having to commit and push your changes
+   your TypeScript action locally without having to commit and push your changes
    to a repository.
 
    The `local-action` utility can be run in the following ways:
-
    - Visual Studio Code Debugger
 
      Make sure to review and, if needed, update
@@ -200,7 +204,8 @@ steps:
 ```
 
 For example workflow runs, check out the
-[Actions tab](https://github.com/actions/javascript-action/actions)! :rocket:
+[Actions tab](https://github.com/pixpilot/github-action-template/actions)!
+:rocket:
 
 ## Usage
 
@@ -221,7 +226,7 @@ steps:
 
   - name: Run my Action
     id: run-action
-    uses: actions/javascript-action@v1 # Commit with the `v1` tag
+    uses: pixpilot/github-action-template@v1 # Commit with the `v1` tag
     with:
       milliseconds: 1000
 

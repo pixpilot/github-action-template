@@ -1,10 +1,10 @@
 /**
- * Unit tests for src/wait.js
+ * Unit tests for src/wait.ts
  */
-import { wait } from '../src/wait.js'
+import { wait } from '../src/wait'
 
 describe('wait.js', () => {
-  it('Throws an invalid number', async () => {
+  test('throws an invalid number', async () => {
     const input = parseInt('foo', 10)
 
     expect(isNaN(input)).toBe(true)
@@ -12,7 +12,7 @@ describe('wait.js', () => {
     await expect(wait(input)).rejects.toThrow('milliseconds is not a number')
   })
 
-  it('Waits with a valid number', async () => {
+  test('waits with a valid number', async () => {
     const start = new Date()
     await wait(500)
     const end = new Date()

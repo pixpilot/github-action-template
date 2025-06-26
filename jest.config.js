@@ -19,11 +19,20 @@ const jestConfig = {
   //     statements: 100
   //   }
   // },
-  moduleFileExtensions: ['js'],
+  extensionsToTreatAsEsm: ['.ts'],
+  globals: {
+    'ts-jest': {
+      useESM: true
+    }
+  },
+  moduleFileExtensions: ['js', 'ts'],
   reporters: ['default'],
   testEnvironment: 'node',
-  testMatch: ['**/*.test.js'],
+  testMatch: ['**/*.test.js', '**/*.test.ts'],
   testPathIgnorePatterns: ['/dist/', '/node_modules/'],
+  transform: {
+    '^.+\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.json' }]
+  },
   verbose: true
 }
 
