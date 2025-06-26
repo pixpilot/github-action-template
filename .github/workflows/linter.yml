@@ -44,8 +44,23 @@ jobs:
         id: install
         run: npm ci
 
-      # Lint the codebase using the `super-linter/super-linter` action.
-      - name: Lint Codebase
+      # Run project linting (includes TypeScript via ESLint)
+      - name: Lint TypeScript and JavaScript
+        id: lint-ts-js
+        run: npm run lint
+
+      # Run TypeScript type checking
+      - name: TypeScript Type Check
+        id: typecheck
+        run: npm run typecheck
+
+      # Run Prettier formatting check
+      - name: Check Formatting
+        id: format-check
+        run: npm run format:check
+
+      # Lint other files using Super Linter
+      - name: Lint Other Files
         id: super-linter
         uses: super-linter/super-linter/slim@v7
         env:
@@ -54,7 +69,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: ${{ github.workspace }}
           VALIDATE_ALL_CODEBASE: true
+          # Disable linters we handle with npm scripts
           VALIDATE_JAVASCRIPT_ES: false
           VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_TYPESCRIPT_STANDARD: false
           VALIDATE_JSCPD: false
           VALIDATE_JSON: false
+          # Keep other useful linters enabled
+          VALIDATE_MARKDOWN_PRETTIER: true
+          VALIDATE_YAML: true
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          MARKDOWN_CONFIG_FILE: .markdownlint.json
