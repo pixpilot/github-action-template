@@ -28,7 +28,7 @@ jobs:
   analyze:
     uses: pixpilot/dev-config/.github/workflows/codeql-analysis.yml@main
     with:
-      config-file: .github/codeql/codeql-configuration.yml
+      config-file: .github/codeql/codeql-config.yml
 # -------------------------------------------------------------
 # Alternative: Reusable workflow for code scanning
 # -------------------------------------------------------------
