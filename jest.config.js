@@ -28,7 +28,7 @@ const jestConfig = {
   moduleFileExtensions: ['js', 'ts'],
   reporters: ['default'],
   testEnvironment: 'node',
-  testMatch: ['**/*.test.js', '**/*.test.ts'],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/*.test.js', '**/*.test.ts'],
   testPathIgnorePatterns: ['/dist/', '/node_modules/'],
   transform: {
     '^.+\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
