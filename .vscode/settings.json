@@ -8,17 +8,12 @@
           "runTaskOnFileCreation": false,
           "label": "Test current file (node)",
           "command": "npm test",
-          "checkIfArgPathExist": ["--config"],
-          "args": [
-            "${relativeTargetFile}",
-            "--config=${workspaceFolder}/jest.config.node.js"
-          ]
+          "args": ["${relativeTargetFile}"]
         },
         {
           "runTaskOnFileCreation": true,
           "label": "Watch current file (node)",
           "command": "npm test",
-          "checkIfArgPathExist": ["--config"],
           "userInputPrompt": [
             [
               {
@@ -26,11 +21,7 @@
               }
             ]
           ],
-          "args": [
-            "--watch",
-            "${relativeTargetFile}",
-            "--config=${workspaceFolder}/jest.config.node.js"
-          ]
+          "args": ["--watch", "${relativeTargetFile}"]
         },
         {
           "terminalInstanceType": "label",
@@ -38,20 +29,16 @@
           "label": "Test directory (node)",
           "command": "npm test",
           "shouldSwitchToFile": false,
-          "checkIfArgPathExist": ["--config"],
-          "args": [
-            "${relativeFileDirname}",
-            "--config=${workspaceFolder}/jest.config.node.js"
-          ]
+          "args": ["${relativeFileDirname}"]
         }
       ],
-      "label": "Jest Tests",
+      "label": "Tests",
       "fileSuffixType": "extend extension",
       "filesSuffix": "test",
       "directoryName": "tests",
       "supportedExtension": ["ts", "tsx", "js", "jsx"],
       "defaultLocationForFiles": "project root",
-      "description": "Jest Tests Creator"
+      "description": "Tests Creator"
     }
   ]
 }
