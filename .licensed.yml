@@ -14,5 +14,5 @@ allowed:
 
 ignored:
   npm:
-    # Used by Rollup.js when building in GitHub Actions
-    - '@rollup/rollup-linux-x64-gnu'
+    # Used by ESBuild when building in GitHub Actions
+    - '@esbuild/linux-x64'
