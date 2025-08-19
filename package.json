@@ -1,10 +1,11 @@
 {
   "name": "github-action-template",
-  "description": "GitHub Actions TypeScript Template",
-  "version": "0.0.0",
-  "author": "",
   "type": "module",
+  "version": "0.0.0",
   "private": true,
+  "description": "GitHub Actions TypeScript Template",
+  "author": "",
+  "license": "MIT",
   "homepage": "https://github.com/pixpilot/github-action-template#readme",
   "repository": {
     "type": "git",
@@ -43,7 +44,6 @@
     "deps:update:major": "npx taze major -r -w && pnpm install",
     "prepare": "husky"
   },
-  "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.11.1"
   },
