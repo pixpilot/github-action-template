@@ -15,7 +15,7 @@ import { wait } from './wait';
 export async function run(): Promise<void> {
   try {
     const ms = core.getInput('milliseconds');
-    
+
     // Log info about the action starting
     core.info(`Starting GitHub Action with ${ms} milliseconds wait time`);
 
@@ -29,14 +29,14 @@ export async function run(): Promise<void> {
 
     // Set outputs for other workflow steps to use
     core.setOutput('time', new Date().toTimeString());
-    
+
     // Log completion
     core.info('GitHub Action completed successfully');
   } catch (error) {
     // Log the error for debugging
     const errorMessage = error instanceof Error ? error.message : String(error);
     core.error(`Action failed: ${errorMessage}`);
-    
+
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message);
   }

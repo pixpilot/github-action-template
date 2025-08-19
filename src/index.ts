@@ -7,5 +7,5 @@ import { run } from './main.js';
 // Export the run function for local-action tool
 export { run };
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
+// eslint-disable-next-line ts/no-floating-promises
 run();

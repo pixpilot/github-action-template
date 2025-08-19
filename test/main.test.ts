@@ -58,10 +58,10 @@ describe('main.ts', () => {
 
     // Verify info calls
     expect(vi.mocked(core.info)).toHaveBeenCalledWith(
-      'Starting GitHub Action with 500 milliseconds wait time'
+      'Starting GitHub Action with 500 milliseconds wait time',
     );
     expect(vi.mocked(core.info)).toHaveBeenCalledWith(
-      'GitHub Action completed successfully'
+      'GitHub Action completed successfully',
     );
 
     // Verify debug calls
@@ -81,7 +81,7 @@ describe('main.ts', () => {
 
     // Verify error logging
     expect(vi.mocked(core.error)).toHaveBeenCalledWith(
-      'Action failed: milliseconds is not a number'
+      'Action failed: milliseconds is not a number',
     );
 
     // Verify setFailed is called
