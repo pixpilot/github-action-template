@@ -1,4 +1,4 @@
-name: 'CodeQL Analyser'
+name: 'CodeQL'
 
 permissions:
   security-events: write
