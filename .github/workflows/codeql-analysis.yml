@@ -39,7 +39,7 @@ jobs:
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
-      - name: Run CodeQL Scanner
+      - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 # -------------------------------------------------------------
 # Alternative: pixpilot/codeql-scanner@main
