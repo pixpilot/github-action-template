@@ -26,6 +26,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "setup": "npx @pixpilot/scaffoldfy --config ./setup/scaffoldfy.json",
     "bundle": "pnpm run format:write && pnpm run build",
     "build": "node esbuild.config.cjs",
     "ci-test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 npx vitest --run",
