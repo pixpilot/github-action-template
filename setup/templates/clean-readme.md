@@ -25,14 +25,6 @@ pnpm lint
 pnpm format
 ```
 
-### Create a New Package
-
-Generate a new package in the monorepo:
-
-```sh
-pnpm run turbo:gen:init
-```
-
 ## 📦 Packages
 
 <!-- List your packages here -->
