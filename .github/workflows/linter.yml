@@ -38,30 +38,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Setup Node.js using the version specified in `.node-version`.
-      - name: Setup Node.js
-        id: setup-node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: npm
-
-      # Install dependencies using `npm ci`.
-      - name: Install Dependencies
-        id: install
-        run: npm ci
+      # Setup the project with pnpm and install dependencies.
+      - name: Setup Project
+        id: setup-project
+        uses: ./.github/actions/setup-project
 
       # Run project linting (includes TypeScript via ESLint)
       - name: Lint TypeScript and JavaScript
         id: lint-ts-js
-        run: npm run lint
+        run: pnpm run lint
 
       # Run TypeScript type checking
       - name: TypeScript Type Check
         id: typecheck
-        run: npm run typecheck
+        run: pnpm run typecheck
 
       # Run Prettier formatting check
       - name: Check Formatting
         id: format-check
-        run: npm run format:check
+        run: pnpm run format
