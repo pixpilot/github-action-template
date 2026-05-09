@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.33.0",
   "description": "GitHub Actions TypeScript Template",
   "author": "",
   "license": "MIT",
@@ -23,7 +23,8 @@
     ".": "./dist/index.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20",
+    "pnpm": ">=9.6.0"
   },
   "scripts": {
     "setup": "npx @pixpilot/scaffoldfy --config ./setup/scaffoldfy.json",
@@ -42,38 +43,39 @@
     "tsc:watch": "tsc --noEmit --watch",
     "local-action": "npx @github/local-action . src/index.ts .env",
     "fix:all": "pnpm format:fix && pnpm lint:fix && pnpm typecheck",
+    "check:all": "npm run format && npm run lint && npm run typecheck && npm run test",
     "deps:update": "npx taze -r -w && pnpm install",
     "deps:update:major": "npx taze major -r -w && pnpm install",
     "prepare": "husky"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1"
+    "@actions/core": "^3.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@eslint/compat": "^1.3.2",
-    "@github/local-action": "^5.1.0",
-    "@pixpilot/dev-config": "^3.1.0",
-    "@pixpilot/eslint-config": "^2.7.0",
-    "@types/node": "^24.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.40.0",
-    "@typescript-eslint/parser": "^8.40.0",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vitest/ui": "^3.2.4",
-    "cross-env": "^10.0.0",
-    "esbuild": "^0.25.9",
-    "eslint": "^9.33.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.4",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
+    "@github/local-action": "^7.0.1",
+    "@pixpilot/dev-config": "^3.18.0",
+    "@pixpilot/eslint-config": "^2.10.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "^25.6.2",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "@vitest/coverage-v8": "^4.1.5",
+    "@vitest/ui": "^4.1.5",
+    "cross-env": "^10.1.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^9.39.4",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.5",
+    "lint-staged": "^17.0.2",
     "make-coverage-badge": "^1.2.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.3",
     "prettier-eslint": "^16.4.2",
-    "tsx": "^4.20.4",
-    "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "semantic-release": "^25.0.3",
+    "semantic-release-major-tag": "^0.3.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.5"
   }
 }

@@ -75,7 +75,7 @@ describe('main.ts', () => {
 
     vi.mocked(waitMock)
       .mockClear()
-      .mockRejectedValueOnce(new Error('milliseconds is not a number') as never);
+      .mockRejectedValueOnce(new Error('milliseconds is not a number'));
 
     await run();
 

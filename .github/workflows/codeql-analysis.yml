@@ -1,4 +1,4 @@
-name: CodeQL
+name: CodeQL Analyser
 
 permissions:
   security-events: write
@@ -26,6 +26,14 @@ on:
 
 jobs:
   codeql-analysis:
+    if: >-
+      ${{
+        github.event_name == 'schedule' ||
+        (
+          !contains(github.event.head_commit.message, '[skip ci]') &&
+          !contains(github.event.head_commit.message, '[ci skip]')
+        )
+      }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -39,7 +47,7 @@ jobs:
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
-      - name: Run CodeQL Analysis
+      - name: Run CodeQL Scanner
         uses: github/codeql-action/analyze@v3
 # -------------------------------------------------------------
 # Alternative: pixpilot/codeql-scanner@main
@@ -54,10 +62,9 @@ jobs:
 #     steps:
 #       - name: Checkout repository
 #         uses: actions/checkout@v4
-
+#
 #       - name: Run CodeQL Scanner
 #         uses: pixpilot/codeql-scanner@main
 #         with:
 #           token: ${{ secrets.GITHUB_TOKEN }}
 #           config-file: .github/codeql/codeql-config.yml
-

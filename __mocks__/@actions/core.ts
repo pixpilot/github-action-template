@@ -3,10 +3,10 @@
  */
 import { vi } from 'vitest';
 
-export const debug = vi.fn();
-export const error = vi.fn();
-export const info = vi.fn();
-export const getInput = vi.fn();
-export const setOutput = vi.fn();
-export const setFailed = vi.fn();
-export const warning = vi.fn();
+export const debug: ReturnType<typeof vi.fn> = vi.fn();
+export const error: ReturnType<typeof vi.fn> = vi.fn();
+export const info: ReturnType<typeof vi.fn> = vi.fn();
+export const getInput: ReturnType<typeof vi.fn> = vi.fn();
+export const setOutput: ReturnType<typeof vi.fn> = vi.fn();
+export const setFailed: ReturnType<typeof vi.fn> = vi.fn();
+export const warning: ReturnType<typeof vi.fn> = vi.fn();

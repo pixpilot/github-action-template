@@ -1,0 +1,67 @@
+# This workflow will lint the entire codebase using the
+# `super-linter/super-linter` action.
+#
+# For more information, see the super-linter repository:
+#     https://github.com/super-linter/super-linter
+name: Lint Codebase
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+
+jobs:
+  lint:
+    name: Lint Codebase
+    if: >-
+      ${{
+        github.event_name != 'push' ||
+        (
+          !contains(github.event.head_commit.message, '[skip ci]') &&
+          !contains(github.event.head_commit.message, '[ci skip]')
+        )
+      }}
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository.
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Setup Node.js using the version specified in `.node-version`.
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      # Install dependencies using `npm ci`.
+      - name: Install Dependencies
+        id: install
+        run: npm ci
+
+      # Run project linting (includes TypeScript via ESLint)
+      - name: Lint TypeScript and JavaScript
+        id: lint-ts-js
+        run: npm run lint
+
+      # Run TypeScript type checking
+      - name: TypeScript Type Check
+        id: typecheck
+        run: npm run typecheck
+
+      # Run Prettier formatting check
+      - name: Check Formatting
+        id: format-check
+        run: npm run format:check
