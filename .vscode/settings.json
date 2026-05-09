@@ -4,7 +4,7 @@
       "file": ".github/copilot/commit-message-style.md"
     },
     {
-      "file": "commitlint.config.mjs"
+      "file": "commitlint.config.cjs"
     }
   ]
 }
