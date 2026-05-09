@@ -90,4 +90,17 @@ describe('main.ts', () => {
       'milliseconds is not a number',
     );
   });
+
+  it('logs and handles non-Error failures without setting failed status', async () => {
+    vi.mocked(core.getInput).mockClear().mockReturnValueOnce('500');
+
+    vi.mocked(waitMock).mockClear().mockRejectedValueOnce('unexpected failure');
+
+    await run();
+
+    expect(vi.mocked(core.error)).toHaveBeenCalledWith(
+      'Action failed: unexpected failure',
+    );
+    expect(vi.mocked(core.setFailed)).not.toHaveBeenCalled();
+  });
 });
