@@ -80,4 +80,4 @@ jobs:
         id: test-action
         uses: ./
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          milliseconds: 1000

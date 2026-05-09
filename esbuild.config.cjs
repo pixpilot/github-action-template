@@ -9,6 +9,9 @@ esbuild
     target: 'node20',
     outdir: 'dist',
     format: 'esm',
+    banner: {
+      js: "import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);",
+    },
     external: ['string_decoder', 'fs', 'path', 'os', 'util', 'stream'],
     sourcemap: false,
     tsconfig: 'tsconfig.build.json',
