@@ -4,28 +4,42 @@
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/setup-guard/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/project-info/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/pixpilot-info/scaffoldfy.json",
-    "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/turbo-workspace-package-generator/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/license-file/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/update-root-package-json/scaffoldfy.json",
-    "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/pixpilot-copilot-instructions/scaffoldfy.json"
+    "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/security-policy/scaffoldfy.json"
   ],
-  "name": "github-action-template-setup",
-  "description": "Initial setup for the GitHub Action template. The shared setup-guard config strips the one-time gate; this config deletes setup/ afterwards, once clean-readme has read its template from there.",
+  "name": "pnpm-turbo-monorepo-template-setup-local",
+  "description": "Runs setup tasks without modifying README.md, GitHub workflows, or adding the package-section generator.",
+  "prompts": [],
   "tasks": [
     {
-      "id": "clean-readme",
-      "name": "Clean README",
-      "description": "Create a fresh README for the new project",
-      "type": "write",
+      "id": "reset-package-version",
+      "name": "Reset package version",
+      "description": "Reset the root package version for the newly scaffolded project.",
+      "type": "update-json",
       "config": {
-        "file": "README.md",
-        "templateFile": "./templates/clean-readme.md"
+        "file": "package.json",
+        "updates": {
+          "version": "0.0.0"
+        }
+      }
+    },
+    {
+      "id": "update-description",
+      "name": "Update package description",
+      "description": "Update the root package description for the newly scaffolded project.",
+      "type": "update-json",
+      "config": {
+        "file": "package.json",
+        "updates": {
+          "description": "{{projectName}}"
+        }
       }
     },
     {
       "id": "update-contributing",
       "name": "Update CONTRIBUTING.md",
-      "description": "Update contributing guidelines with project info",
+      "description": "Update contributing guidelines with project information.",
       "type": "replace-in-file",
       "config": {
         "file": "CONTRIBUTING.md",
@@ -37,24 +51,24 @@
         ]
       }
     },
+
+    {
+      "id": "reinstall-dependencies",
+      "name": "Reinstall dependencies",
+      "description": "Reinstall dependencies after setup cleanup.",
+      "type": "exec",
+      "config": {
+        "command": "pnpm install"
+      }
+    },
     {
       "id": "delete-setup-folder",
       "name": "Delete setup folder",
-      "description": "Remove the guard, this config and its templates -- placed after clean-readme, which reads setup/templates/clean-readme.md",
+      "description": "Remove setup assets after setup-guard has stripped their call sites.",
       "type": "delete",
       "config": {
         "paths": ["setup"]
       }
-    },
-    {
-      "id": "install-dependencies",
-      "name": "Install dependencies",
-      "description": "Run last, after the gate is gone, so the removed postinstall guard is not re-triggered",
-      "type": "exec",
-      "config": {
-        "command": "pnpm install"
-      },
-      "dependencies": ["delete-setup-folder"]
     }
   ]
 }
