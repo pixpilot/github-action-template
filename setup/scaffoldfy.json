@@ -4,6 +4,7 @@
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/setup-guard/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/project-info/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/pixpilot-info/scaffoldfy.json",
+    "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/github-action-release-app-token/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/license-file/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/update-root-package-json/scaffoldfy.json",
     "https://unpkg.com/@pixpilot/scaffoldfy-configs@latest/security-policy/scaffoldfy.json"
